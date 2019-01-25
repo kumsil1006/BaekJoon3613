@@ -1,0 +1,66 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+	string str;
+	getline(cin, str);
+	bool cpp = false;
+	bool java = false;
+
+	for (int i = 0; i < str.length(); i++) {
+		if (str[i] == '_') {
+			cpp = true;
+			if (i == 0) {
+				cout << "Error!" << endl;
+				return 0;
+			}
+			if (java == true) {
+				cout << "Error!" << endl;
+				return 0;
+			}
+			if (str[i+1]  == '_') {
+				cout << "Error!" << endl;
+				return 0;
+			}
+			if (i == str.length() - 1) {
+				cout << "Error!" << endl;
+				return 0;
+			}
+			
+		}
+		if (str[i] <= 'Z' && str[i] >= 'A') {
+			if (i == 0) {
+				cout << "Error!" << endl;
+				return 0;
+			}
+			java = true;
+			if (cpp == true ) {
+				cout << "Error!" << endl;
+				return 0;
+			}
+		}
+		else if (str[i] == ' ') {
+			cout << "Error!" << endl;
+			return 0;
+		}
+	}
+
+	for (int i = 0; i < str.length();i++) {
+		if (str[i] == '_') {
+			i++;
+			int s = str[i] - 32;
+			cout << static_cast<char>(s);	
+			continue;
+		}
+		if (str[i] <= 'Z' && str[i] >= 'A') {		
+			int s = str[i] + 32;
+			cout << '_' << static_cast<char>(s);
+		}
+		if (str[i] <= 'z' && str[i] >= 'a') {
+			cout << str[i];
+		}
+		
+	}
+}
